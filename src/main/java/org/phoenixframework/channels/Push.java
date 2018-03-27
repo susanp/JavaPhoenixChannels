@@ -193,7 +193,10 @@ public class Push {
         };
     }
 
-    private void matchReceive(final String status, final Envelope envelope) {
+    /**
+     * Visible for testing. Do not call it except for {@link Push}.
+     */
+    public void matchReceive(final String status, final Envelope envelope) {
         synchronized (recHooks) {
             final List<IMessageCallback> statusCallbacks = this.recHooks.get(status);
             if (statusCallbacks != null) {
