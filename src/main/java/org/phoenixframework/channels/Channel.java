@@ -250,11 +250,12 @@ public class Channel {
 
     /**
      * Triggers event signalling to all callbacks bound to the specified event.
+     * Do not call this method except for testing and {@link Socket}.
      *
      * @param triggerEvent The event name
      * @param envelope     The message's envelope relating to the event or null if not relevant.
      */
-    void trigger(final String triggerEvent, final Envelope envelope) {
+    public void trigger(final String triggerEvent, final Envelope envelope) {
         synchronized (bindings) {
             for (final Binding binding : bindings) {
                 if (binding.getEvent().equals(triggerEvent)) {
